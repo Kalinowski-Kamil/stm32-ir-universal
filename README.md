@@ -23,12 +23,12 @@ Uniwersalny odbiornik + dekoder IR (NEC/JVC/Panasonic Kaseikyo/Sony/Sharp/RC5/RC
 
 ### Włączenie testów (IR_ENABLE_SELF_TESTS)
 - CubeIDE: *Project → Properties → C/C++ Build → Settings → MCU GCC Compiler → Preprocessor → Defined symbols* → dodaj `IR_ENABLE_SELF_TESTS`.
-- Zdefiniowanie flagi w `firmware/App/ir_config.h`
+- Zdefiniowanie flagi w `Core/Inc/ir_config.h`
 
 Po włączeniu testów firmware uruchomi `IR_Tests_RunUART()` (nie wraca) i będzie raportował PASS/FAIL przez UART, a LED będzie migał (wolno = PASS, szybko = FAIL).
 
 ## Konfiguracja
-Wszystkie progi i bufory są w `firmware/App/ir_config.h`:
+Wszystkie progi i bufory są w `Core/Inc/ir_config.h`:
 - `IR_MIN_PULSE_US` – odrzucanie szumów < 80 µs,
 - `IR_GAP_US` – luka kończąca ramkę ~18 ms,
 - `IR_MAX_SEGS` – rozmiar bufora,
@@ -37,7 +37,7 @@ Wszystkie progi i bufory są w `firmware/App/ir_config.h`:
 Protokoły:
 - NEC (24/32): 9000/4500 µs, T~560 µs (repeat: 9000/2250).
 - JVC (16/32): 8400/4200, T~525 µs.
-- Panasonic Kaseikyo (~48): 3500/1750, T~435 µs.
+- Panasonic Kaseikyo (48): 3500/1750, T 435 µs.
 - Sony SIRC (12/15/20): 2400/600; stała przerwa 600; mark 600/1200.
 - Sharp (~15): mark ~320, space ~1000/2000.
 - RC5 (14): Manchester, T=889 µs (bit=2T), brak lidera.
